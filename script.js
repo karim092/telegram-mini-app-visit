@@ -15,7 +15,7 @@ class PremiumBusinessCard {
         this.setTheme();
         
         // Заполняем данные пользователя
-        this.fillUserData();
+        // this.fillUserData();
         
         // Показываем интерфейс
         tg.ready();
@@ -184,5 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Показываем информацию для отладки
 console.log('🤖 Telegram Web App инициализирован:', tg.initDataUnsafe);
+
 
 
