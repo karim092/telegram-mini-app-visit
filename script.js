@@ -58,15 +58,25 @@ class PremiumBusinessCard {
     }*/
     
     bindEvents() {
-        // Кнопка "Связаться со мной"
-        document.getElementById('contact-btn').addEventListener('click', () => {
-            this.showContactOptions();
-        });
+        // Кнопка "Связаться со мной" - ИСПРАВЛЕННЫЙ КОД
+        const contactBtn = document.getElementById('contact-btn');
+        if (contactBtn) {
+            contactBtn.addEventListener('click', () => {
+                this.showContactOptions();
+            });
+            console.log('✅ Кнопка "Связаться" найдена и привязана');
+        } else {
+            console.log('❌ Кнопка "Связаться" не найдена!');
+        }
         
         // Кнопки социальных сетей
-        document.querySelectorAll('.social-btn').forEach(btn => {
+        const socialBtns = document.querySelectorAll('.social-btn');
+        console.log(`📱 Найдено кнопок социальных сетей: ${socialBtns.length}`);
+        
+        socialBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const url = e.currentTarget.getAttribute('data-url');
+                console.log('🌐 Открываем ссылку:', url);
                 if (url) {
                     tg.openLink(url);
                 }
@@ -75,6 +85,46 @@ class PremiumBusinessCard {
         
         // Анимация при загрузке
         this.animateElements();
+    }
+    
+    showContactOptions() {
+        console.log('🔄 Открывается попап контактов...');
+        
+        // Создаем кастомные кнопки для попапа
+        const buttons = [
+            { id: 'telegram', text: '📱 Написать в Telegram', type: 'default' },
+            { id: 'phone', text: '📞 Позвонить', type: 'default' },
+            { id: 'email', text: '📧 Отправить Email', type: 'default' },
+            { id: 'cancel', text: '❌ Отмена', type: 'cancel' }
+        ];
+        
+        // Показываем попап с контактами
+        tg.showPopup({
+            title: '💎 Связаться со мной',
+            message: 'Выберите удобный способ связи:',
+            buttons: buttons
+        }, (buttonId) => {
+            console.log('🔘 Нажата кнопка:', buttonId);
+            
+            switch(buttonId) {
+                case 'telegram':
+                    tg.openLink('https://t.me/yourusername');
+                    break;
+                case 'phone':
+                    // Для телефона используем tel: ссылку
+                    tg.openLink('tel:+79991234567');
+                    break;
+                case 'email':
+                    tg.openLink('mailto:your@email.com');
+                    break;
+                case 'cancel':
+                    // Ничего не делаем при отмене
+                    console.log('❌ Пользователь отменил выбор');
+                    break;
+                default:
+                    console.log('⚡ Неизвестная кнопка:', buttonId);
+            }
+        });
     }
     
     showContactOptions() {
@@ -134,4 +184,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Показываем информацию для отладки
 console.log('🤖 Telegram Web App инициализирован:', tg.initDataUnsafe);
+
 
