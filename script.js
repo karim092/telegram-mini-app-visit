@@ -31,7 +31,7 @@ class PremiumBusinessCard {
         document.documentElement.style.setProperty('--tg-theme-button-text-color', '#000000');
     }
     
-    fillUserData() {
+    /*fillUserData() {
         const user = tg.initDataUnsafe.user;
         if (user) {
             // Обновляем имя пользователя
@@ -55,7 +55,7 @@ class PremiumBusinessCard {
                 title.textContent += ` | @${user.username}`;
             }
         }
-    }
+    }*/
     
     bindEvents() {
         // Кнопка "Связаться со мной"
@@ -134,3 +134,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Показываем информацию для отладки
 console.log('🤖 Telegram Web App инициализирован:', tg.initDataUnsafe);
+
