@@ -27,6 +27,7 @@ body {
 }
 
 .container {
+    margin-top: 50px;
     max-width: 400px;
     margin: 0 auto;
     background: var(--bg-secondary);
@@ -284,3 +285,4 @@ body {
         font-size: 22px;
     }
 }
+
