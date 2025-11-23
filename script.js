@@ -87,72 +87,22 @@ class PremiumBusinessCard {
         this.animateElements();
     }
     
-    showContactOptions() {
-        console.log('🔄 Открывается попап контактов...');
-        
-        // Создаем кастомные кнопки для попапа
-        const buttons = [
-            { id: 'telegram', text: '📱 Написать в Telegram', type: 'default' },
-            { id: 'phone', text: '📞 Позвонить', type: 'default' },
-            { id: 'email', text: '📧 Отправить Email', type: 'default' },
-            { id: 'cancel', text: '❌ Отмена', type: 'cancel' }
-        ];
-        
-        // Показываем попап с контактами
-        tg.showPopup({
-            title: '💎 Связаться со мной',
-            message: 'Выберите удобный способ связи:',
-            buttons: buttons
-        }, (buttonId) => {
-            console.log('🔘 Нажата кнопка:', buttonId);
-            
-            switch(buttonId) {
-                case 'telegram':
-                    tg.openLink('https://t.me/yourusername');
-                    break;
-                case 'phone':
-                    // Для телефона используем tel: ссылку
-                    tg.openLink('tel:+79991234567');
-                    break;
-                case 'email':
-                    tg.openLink('mailto:your@email.com');
-                    break;
-                case 'cancel':
-                    // Ничего не делаем при отмене
-                    console.log('❌ Пользователь отменил выбор');
-                    break;
-                default:
-                    console.log('⚡ Неизвестная кнопка:', buttonId);
-            }
-        });
-    }
+showContactOptions() {
+    console.log('🔄 Кнопка "Связаться" нажата!');
     
-    showContactOptions() {
-        const buttons = [
-            { id: 'telegram', text: '📱 Написать в Telegram', type: 'default' },
-            { id: 'phone', text: '📞 Позвонить', type: 'default' },
-            { id: 'email', text: '📧 Email', type: 'default' },
-            { type: 'cancel' }
-        ];
-        
-        tg.showPopup({
-            title: '💎 Связаться',
-            message: 'Выберите удобный способ связи:',
-            buttons: buttons
-        }, (buttonId) => {
-            switch(buttonId) {
-                case 'telegram':
-                    tg.openLink('https://t.me/yourusername');
-                    break;
-                case 'phone':
-                    tg.openLink('tel:+79991234567');
-                    break;
-                case 'email':
-                    tg.openLink('mailto:your@email.com');
-                    break;
-            }
-        });
+    // Ваш реальный Telegram username (замените yourusername)
+    const telegramUrl = 'https://t.me/yourusername';
+    
+    // Просто открываем ссылку - это гарантированно работает
+    if (tg && tg.openLink) {
+        tg.openLink(telegramUrl);
+        console.log('✅ Ссылка открыта через Telegram WebApp');
+    } else {
+        // Fallback на обычное открытие
+        window.open(telegramUrl, '_blank');
+        console.log('✅ Ссылка открыта в новом окне');
     }
+}
     
     animateElements() {
         // Анимация появления элементов
@@ -184,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Показываем информацию для отладки
 console.log('🤖 Telegram Web App инициализирован:', tg.initDataUnsafe);
+
 
 
 
