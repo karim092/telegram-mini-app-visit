@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-    margin-top: 50px; /* Добавляем отступ сверху */
+    margin-top: 60px; /* Добавляем отступ сверху */
     max-width: 400px;
 
     background: var(--bg-secondary);
@@ -285,5 +285,6 @@ body {
         font-size: 22px;
     }
 }
+
 
 
