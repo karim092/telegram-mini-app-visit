@@ -1,0 +1,286 @@
+/* CSS переменные для золотой темы */
+:root {
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --gold-primary: #FFD700;
+    --gold-secondary: #D4AF37;
+    --gold-glow: rgba(255, 215, 0, 0.3);
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --card-bg: rgba(255, 215, 0, 0.05);
+    --border-gold: linear-gradient(45deg, #FFD700, #D4AF37, #FFD700);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    padding: 30px 25px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: var(--border-gold);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Аватар с золотой анимацией */
+.avatar-container {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto 25px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.gold-ring {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid var(--gold-primary);
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
+    z-index: 1;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.status-dot {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    background: #00ff00;
+    border: 2px solid var(--bg-secondary);
+    border-radius: 50%;
+    z-index: 3;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Текстовая информация */
+.profile-info {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--gold-primary), var(--gold-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    animation: textShine 2s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.2); }
+}
+
+.title {
+    color: var(--gold-primary);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.bio {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Контактная информация */
+.contact-info {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.icon {
+    margin-right: 10px;
+    color: var(--gold-primary);
+}
+
+/* Основная кнопка */
+.contact-btn {
+    width: 100%;
+    padding: 16px 20px;
+    background: linear-gradient(45deg, var(--gold-primary), var(--gold-secondary));
+    border: none;
+    border-radius: 16px;
+    color: #000;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.contact-btn:hover::before {
+    left: 100%;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--gold-glow);
+}
+
+.contact-btn:active {
+    transform: translateY(0);
+}
+
+/* Социальные сети */
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-title {
+    text-align: center;
+    color: var(--gold-primary);
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 12px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.social-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--gold-primary);
+}
+
+/* Футер */
+.footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .name {
+        font-size: 22px;
+    }
+}

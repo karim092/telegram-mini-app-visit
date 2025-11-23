@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визитка | Премиум</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Аватар с золотой рамкой -->
+        <div class="avatar-container">
+            <img src="images/avatar.jpg" alt="Avatar" class="avatar">
+            <div class="gold-ring"></div>
+            <div class="status-dot"></div>
+        </div>
+
+        <!-- Основная информация -->
+        <div class="profile-info">
+            <h1 class="name" id="user-name">Александр Иванов</h1>
+            <p class="title">Премиум разработчик</p>
+            <p class="bio">Создаю цифровые продукты премиум-класса. Специализация: веб-приложения, Telegram боты, мобильные решения.</p>
+        </div>
+
+        <!-- Контактная информация -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <span class="icon">📍</span>
+                <span>Москва, Россия</span>
+            </div>
+            <div class="contact-item">
+                <span class="icon">⭐</span>
+                <span>В индустрии 5+ лет</span>
+            </div>
+        </div>
+
+        <!-- Основная кнопка действия -->
+        <button class="contact-btn" id="contact-btn">
+            <span class="btn-icon">💎</span>
+            Связаться со мной
+        </button>
+
+        <!-- Социальные сети -->
+        <div class="social-links">
+            <div class="social-title">Мои проекты:</div>
+            <div class="social-grid">
+                <button class="social-btn" data-url="https://t.me/yourchannel">
+                    <span>📢</span>
+                    <span>Telegram</span>
+                </button>
+                <button class="social-btn" data-url="https://github.com">
+                    <span>⚡</span>
+                    <span>GitHub</span>
+                </button>
+                <button class="social-btn" data-url="https://portfolio.com">
+                    <span>🎨</span>
+                    <span>Портфолио</span>
+                </button>
+                <button class="social-btn" data-url="https://youtube.com">
+                    <span>📹</span>
+                    <span>YouTube</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <div class="footer">
+            <p>Обновлено сегодня • Премиум качество</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
